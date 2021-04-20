@@ -25,6 +25,7 @@ def home(request):
 
         else:
             return render(request, 'homepage/index.html')
+    
 
 def about(request):
     if request.method == 'GET':
@@ -61,14 +62,14 @@ def viewremedy(request):
             return render(request, 'homepage/viewremedy.html')
 
 
-def contact(request):
+"""def contact(request):
     if request.method == 'GET':
 
         if request.user.is_authenticated:
             return render(request, 'homepage/contact.html')
 
         else:
-            return render(request, 'homepage/contact.html')
+            return render(request, 'homepage/contact.html')"""
 
 
 
@@ -458,3 +459,24 @@ def chat_messages(request):
 
 
 # -----------------------------chatting system ---------------------------------------------------
+from .forms import appointmentform
+from .models import appointment
+#--------------appointment/feedback---------
+def contact(request):
+    if request.method == 'POST': 
+        
+        if request.POST.get('name') and request.POST.get('email') and request.POST.get('service') and request.POST.get('time') and request.POST.get('note'):
+            post = appointment()
+            post.name = request.POST.get('name')
+            post.email = request.POST.get('email')
+            post.service = request.POST.get('service')
+            post.time = request.POST.get('time')
+            post.note = request.POST.get('note')
+            post.save()
+            return render(request, 'homepage/contact.html', {'post' : post})
+
+    else:
+        return render(request, 'homepage/contact.html')
+    return render(request, "homepage/contact.html")
+    
+

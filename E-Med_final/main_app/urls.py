@@ -34,6 +34,6 @@ urlpatterns = [
     path('post', views.post, name='post'),
     path('chat_messages', views.chat_messages, name='chat_messages'),
     
-
+ #  path('appointment/', views.showappoinment, name = "showappointment"),
 
 ]  

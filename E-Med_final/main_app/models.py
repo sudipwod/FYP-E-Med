@@ -99,3 +99,13 @@ class remedies(models.Model):
     def __str__(self):
         return self.remedyname
 
+class appointment(models.Model):
+    name = models.CharField(max_length = 100)
+    email = models.EmailField()
+    service = models.CharField(max_length = 50)
+    time = models.CharField(max_length = 50)
+    note = models.CharField(max_length = 1000)
+    
+    def __str__(self):
+        return self.name
+
