@@ -74,8 +74,6 @@ TEMPLATES = [
 ]
 
 
-
-
 WSGI_APPLICATION = 'disease_prediction.wsgi.application'
 
 
@@ -85,14 +83,12 @@ WSGI_APPLICATION = 'disease_prediction.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newdb',
-        'USER': 'saroj',
-        'PASSWORD': 'kingsrz',
+        'NAME': 'postgres',
+        'USER': 'sudip',
+        'PASSWORD': 'sudip123',
         'HOST': 'localhost'
     }
 }
-
-
 
 
 # Password validation

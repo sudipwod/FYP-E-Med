@@ -1,3 +1,5 @@
+from .models import appointment
+from .forms import appointmentform
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -13,7 +15,7 @@ from chats.models import Chat, Feedback
 
 # loading trained_model
 import joblib as jb
-model = jb.load('trained_model')
+model = jb.load('mnb.joblib')
 
 
 def home(request):
@@ -25,7 +27,7 @@ def home(request):
 
         else:
             return render(request, 'homepage/index.html')
-    
+
 
 def about(request):
     if request.method == 'GET':
@@ -43,6 +45,7 @@ def mdoctor(request):
         else:
             return render(request, 'homepage/doctor.html')
 
+
 def viewhospital(request):
     if request.method == 'GET':
 
@@ -51,6 +54,7 @@ def viewhospital(request):
 
         else:
             return render(request, 'homepage/viewhospital.html')
+
 
 def viewremedy(request):
     if request.method == 'GET':
@@ -70,9 +74,6 @@ def viewremedy(request):
 
         else:
             return render(request, 'homepage/contact.html')"""
-
-
-
 
 
 def patient_ui(request):
@@ -190,80 +191,81 @@ def checkdisease(request):
             confidencescore = format(confidencescore, '.0f')
             predicted_disease = predicted[0]
 
-       #consult_doctor codes----------
+       # consult_doctor codes----------
 
-        Rheumatologist = [  'Osteoarthristis','Arthritis']
-       
-        Cardiologist = [ 'Heart attack','Bronchial Asthma','Hypertension ']
-       
-        ENT_specialist = ['(vertigo) Paroymsal  Positional Vertigo','Hypothyroidism' ]
+        Rheumatologist = ['Osteoarthristis', 'Arthritis']
+
+        Cardiologist = ['Heart attack', 'Bronchial Asthma', 'Hypertension ']
+
+        ENT_specialist = [
+            '(vertigo) Paroymsal  Positional Vertigo', 'Hypothyroidism']
 
         Orthopedist = []
 
-        Neurologist = ['Varicose veins','Paralysis (brain hemorrhage)','Migraine','Cervical spondylosis']
+        Neurologist = [
+            'Varicose veins', 'Paralysis (brain hemorrhage)', 'Migraine', 'Cervical spondylosis']
 
-        Allergist_Immunologist = ['Allergy','Pneumonia','AIDS','Common Cold','Tuberculosis','Malaria','Dengue','Typhoid']
+        Allergist_Immunologist = ['Allergy', 'Pneumonia', 'AIDS',
+                                  'Common Cold', 'Tuberculosis', 'Malaria', 'Dengue', 'Typhoid']
 
-        Urologist = [ 'Urinary tract infection','Dimorphic hemmorhoids(piles)']
+        Urologist = ['Urinary tract infection', 'Dimorphic hemmorhoids(piles)']
 
-        Dermatologist = [  'Acne','Chicken pox','Fungal infection','Psoriasis','Impetigo']
+        Dermatologist = ['Acne', 'Chicken pox',
+                         'Fungal infection', 'Psoriasis', 'Impetigo']
 
-        Gastroenterologist = ['Peptic ulcer diseae', 'GERD','Chronic cholestasis','Drug Reaction','Gastroenteritis','Hepatitis E',
-        'Alcoholic hepatitis','Jaundice','hepatitis A',
-         'Hepatitis B', 'Hepatitis C', 'Hepatitis D','Diabetes ','Hypoglycemia']
-         
-        if predicted_disease in Rheumatologist :
-           consultdoctor = "Rheumatologist"
-           hospital = "Nepal_Orthopedic_Hospital"
-           remedy = "Home Remedies"
-           
-        if predicted_disease in Cardiologist :
-           consultdoctor = "Cardiologist"
-           hospital = "Sahid_Gangalal_National_Heart_Center"
-           remedy = "Home Remedies"
-           
+        Gastroenterologist = ['Peptic ulcer diseae', 'GERD', 'Chronic cholestasis', 'Drug Reaction', 'Gastroenteritis', 'Hepatitis E',
+                              'Alcoholic hepatitis', 'Jaundice', 'hepatitis A',
+                              'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Diabetes ', 'Hypoglycemia']
 
-        elif predicted_disease in ENT_specialist :
-           consultdoctor = "ENT specialist"
-           hospital = "Kathmandu_ENT_Hospital"
-           remedy = "Home Remedies"
-     
-        elif predicted_disease in Orthopedist :
-           consultdoctor = "Orthopedist"
-           hospital = "Nepal_Orthopedic_Hospital"
-           remedy = "Home Remedies"
-     
-        elif predicted_disease in Neurologist :
-           consultdoctor = "Neurologist"
-           hospital = "Neuro_Hospital"
-           remedy = "Home Remedies"
-     
-        elif predicted_disease in Allergist_Immunologist :
-           consultdoctor = "Allergist/Immunologist"
-           hospital = "Grande_International_Hospital"
-           remedy = "Home Remedies"
+        if predicted_disease in Rheumatologist:
+            consultdoctor = "Rheumatologist"
+            hospital = "Nepal_Orthopedic_Hospital"
+            remedy = "Home Remedies"
 
-     
-        elif predicted_disease in Urologist :
-           consultdoctor = "Urologist"
-           hospital = "Iwamura_Memorial_Hospital"
-           remedy = "Home Remedies"
-     
-        elif predicted_disease in Dermatologist :
-           consultdoctor = "Dermatologist"
-           hospital="Alka_Cosmetic_Dermatology"
-           remedy = "Home Remedies"
-     
-        elif predicted_disease in Gastroenterologist :
-           consultdoctor = "Gastroenterologist"
-           hospital= "Norvic_International_Hospital"
-           remedy = "Home Remedies"
-     
-        else :
-           consultdoctor = "other"
-           hospital = "Bir_Hospital"
-           remedy = "Home Remedies"
+        if predicted_disease in Cardiologist:
+            consultdoctor = "Cardiologist"
+            hospital = "Sahid_Gangalal_National_Heart_Center"
+            remedy = "Home Remedies"
 
+        elif predicted_disease in ENT_specialist:
+            consultdoctor = "ENT specialist"
+            hospital = "Kathmandu_ENT_Hospital"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Orthopedist:
+            consultdoctor = "Orthopedist"
+            hospital = "Nepal_Orthopedic_Hospital"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Neurologist:
+            consultdoctor = "Neurologist"
+            hospital = "Neuro_Hospital"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Allergist_Immunologist:
+            consultdoctor = "Allergist/Immunologist"
+            hospital = "Grande_International_Hospital"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Urologist:
+            consultdoctor = "Urologist"
+            hospital = "Iwamura_Memorial_Hospital"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Dermatologist:
+            consultdoctor = "Dermatologist"
+            hospital = "Alka_Cosmetic_Dermatology"
+            remedy = "Home Remedies"
+
+        elif predicted_disease in Gastroenterologist:
+            consultdoctor = "Gastroenterologist"
+            hospital = "Norvic_International_Hospital"
+            remedy = "Home Remedies"
+
+        else:
+            consultdoctor = "other"
+            hospital = "Bir_Hospital"
+            remedy = "Home Remedies"
 
         request.session['doctortype'] = consultdoctor
         request.session['hospitaltype'] = hospital
@@ -272,28 +274,24 @@ def checkdisease(request):
         patientusername = request.session['patientusername']
         puser = User.objects.get(username=patientusername)
 
-
-
-        #saving to database.....................
+        # saving to database.....................
 
         patient = puser.patient
         diseasename = predicted_disease
         no_of_symp = inputno
         symptomsname = psymptoms
         confidence = confidencescore
-       
-        
 
-        diseaseinfo_new = diseaseinfo(patient=patient,diseasename=diseasename,no_of_symp=no_of_symp,symptomsname=symptomsname,confidence=confidence,consultdoctor=consultdoctor)
+        diseaseinfo_new = diseaseinfo(patient=patient, diseasename=diseasename, no_of_symp=no_of_symp,
+                                      symptomsname=symptomsname, confidence=confidence, consultdoctor=consultdoctor)
         diseaseinfo_new.save()
-        
 
         request.session['diseaseinfo_id'] = diseaseinfo_new.id
 
         print("disease record saved sucessfully.............................")
 
-        return JsonResponse({'predicteddisease': predicted_disease ,'confidencescore':confidencescore , "consultdoctor": consultdoctor, "hospital":hospital, "remedy":remedy})
-   
+        return JsonResponse({'predicteddisease': predicted_disease, 'confidencescore': confidencescore, "consultdoctor": consultdoctor, "hospital": hospital, "remedy": remedy})
+
 
 def pconsultation_history(request):
 
@@ -348,7 +346,7 @@ def consult_a_doctor(request):
         print(doctortype)
         dobj = doctor.objects.all()
 
-        return render(request, 'patient/consult_a_doctor/consult_a_doctor.html', {"dobj":dobj})
+        return render(request, 'patient/consult_a_doctor/consult_a_doctor.html', {"dobj": dobj})
 
 
 def related_hospital(request):
@@ -358,9 +356,9 @@ def related_hospital(request):
         hospitaltype = request.session['hospitaltype']
         print(hospitaltype)
         hobj = Hospital.objects.all()
-        
 
         return render(request, 'patient/consult_a_doctor/related_hospital.html', {"hobj": hobj})
+
 
 def home_remedy(request, ):
 
@@ -369,10 +367,8 @@ def home_remedy(request, ):
         remedytype = request.session['remedytype']
         print(remedytype)
         robj = remedies.objects.all()
-        
 
         return render(request, 'patient/consult_a_doctor/remedies.html', {"robj": robj})
-
 
 
 def hospital(request, id):
@@ -384,7 +380,7 @@ def hospital(request, id):
 def remedy(request, id):
     rpost = remedies.objects.filter(hospital_id=id)[0]
     print(rpost)
-    return render(request, 'homepage/viewremedy.html', {'rpost': rpost})        
+    return render(request, 'homepage/viewremedy.html', {'rpost': rpost})
 
 
 def make_consultation(request, doctorusername):
@@ -406,7 +402,8 @@ def make_consultation(request, doctorusername):
         consultation_date = date.today()
         status = "active"
 
-        consultation_new = consultation(patient=patient_obj, doctor=doctor_obj, diseaseinfo=diseaseinfo_obj, consultation_date=consultation_date, status=status)
+        consultation_new = consultation(patient=patient_obj, doctor=doctor_obj,
+                                        diseaseinfo=diseaseinfo_obj, consultation_date=consultation_date, status=status)
         consultation_new.save()
 
         request.session['consultation_id'] = consultation_new.id
@@ -426,9 +423,6 @@ def consultationview(request, consultation_id):
         return render(request, 'consultation/consultation.html', {"consultation": consultation_obj})
 
 
-
-
-
 # -----------------------------chatting system ---------------------------------------------------
 
 
@@ -439,7 +433,8 @@ def post(request):
         consultation_id = request.session['consultation_id']
         consultation_obj = consultation.objects.get(id=consultation_id)
 
-        c = Chat(consultation_id=consultation_obj, sender=request.user, message=msg)
+        c = Chat(consultation_id=consultation_obj,
+                 sender=request.user, message=msg)
 
         if msg != '':
             c.save()
@@ -459,12 +454,12 @@ def chat_messages(request):
 
 
 # -----------------------------chatting system ---------------------------------------------------
-from .forms import appointmentform
-from .models import appointment
-#--------------appointment/feedback---------
+# --------------appointment/feedback---------
+
+
 def contact(request):
-    if request.method == 'POST': 
-        
+    if request.method == 'POST':
+
         if request.POST.get('name') and request.POST.get('email') and request.POST.get('service') and request.POST.get('time') and request.POST.get('note'):
             post = appointment()
             post.name = request.POST.get('name')
@@ -473,10 +468,8 @@ def contact(request):
             post.time = request.POST.get('time')
             post.note = request.POST.get('note')
             post.save()
-            return render(request, 'homepage/contact.html', {'post' : post})
+            return render(request, 'homepage/contact.html', {'post': post})
 
     else:
         return render(request, 'homepage/contact.html')
     return render(request, "homepage/contact.html")
-    
-

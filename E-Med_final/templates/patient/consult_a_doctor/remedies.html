@@ -1,66 +1,50 @@
-{% extends "basic.html" %}
-{% load static %}
+{% extends "basic.html" %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'patient/consult_a_doctor/consult_a_doctor.css' %}"
+/>
 
- 
-    {% block head %}
-    <link rel="stylesheet" href="{% static 'patient/consult_a_doctor/consult_a_doctor.css' %}">
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+  type="text/css"
+  rel="stylesheet"
+/>
 
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" >
+{% endblock %} {% block body %}
 
-{% endblock %}
+<br /><br /><br /><br /><br /><br />
+<center><h2>Home Remedies</h2></center>
+<div class="container mt-5 mb-3">
+  <br />
 
+  <table class="table table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Remedy Name</th>
+        <th>Remedy Description</th>
+        <th>More</th>
+      </tr>
+    </thead>
 
+    <tbody>
+      {% for i in robj %}
 
+      <tr>
+        <td>{{i.remedyname}}</td>
+        <td>{{i.remedydesc}}</td>
+        <td>
+          <img src="main_app/image" /><button
+            type="submit"
+            class="btn btn-primary"
+          >
+            More
+          </button>
+        </td>
+      </tr>
 
-{% block body %}
-
-
-
-<br><br><br><br><br><br>
-<center><h2> Home Remedies </h2>
-</center>
-<div class="container  mt-5 mb-3">
-<br>
-
-
-
-
-        
-
-            <table class="table table-hover table-bordered">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Remedy Name</th>
-                  <th>Remedy Description</th>
-                  <th>More</th>
-                </tr>
-              </thead>
-
-              <tbody>
-               
-               {% for i in robj %}
-               
-               
-                <tr>
-                  <td>{{i.remedyname}}</td>
-                  <td>{{i.remedydesc}}</td>
-                  <td>
-          
-                   <button type="submit" class="btn btn-primary">more</button></a>
-                     
-                   </td>
-                  
-                </tr>
-
-
-                {% endfor %}
-
-              
-              </tbody>
-            </table>
-        
-
-
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
-  
+
 {% endblock %}

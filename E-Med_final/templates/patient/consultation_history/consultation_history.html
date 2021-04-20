@@ -28,7 +28,6 @@
                 <tr>
                   <th>Doctor name</th>
                   <th>Doctor Email</th>
-                  <th>View Doctor's profile</th>
                   <th>Predicted Disease Name</th>
                   <th>Consultation Date</th>
                   <th>Consultation Status</th>
@@ -44,14 +43,7 @@
                 <tr>
                   <td>{{i.doctor.name}}</td>
                   <td>{{i.doctor.user.email}}</td>
-                  <td>
                   
-                    <form action="{% url 'dviewprofile' i.doctor.user.username %}" method="GET">
-                      {% csrf_token %} 
-                       <button type="submit" class="btn btn-primary">view profile</button>  
-                    </form>
-
-                  </td>
 
                   <td>{{i.diseaseinfo.diseasename}}</td>
                   <td>{{i.consultation_date}}</td>

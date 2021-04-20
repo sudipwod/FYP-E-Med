@@ -3,6 +3,180 @@
 
 
 {% block body %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+  
+    <script src="{% static 'jquery.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+    
+   <title>E-Med</title>
+   <link rel="icon" href="favicon.png">
+   
+   <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'homepage/css.css' %}">
+
+   <!-- Templated index fie css -->
+
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <!-- <title>medical</title> -->
+    <!-- <link rel="icon" href="img/favicon.png"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/themify-icons.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/flaticon.css' %}">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/magnific-popup.css' %}">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/nice-select.css' %}">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/slick.css' %}">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/style.css' %}">
+
+
+  
+  <!-- templated index file css end -->
+    
+
+   
+  <style>
+    .fitness li{
+      border: 1px solid white;
+      align: center
+    }
+a{
+  color: white;
+}
+   .img {
+    position: relative;
+    float: left;
+    width:  200px;
+    height: 200px;
+    background-position: 100% 100%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+
+  body{
+
+  background-image: url( "{% static 'homepage/bootstrap/img/new_bg.JPG' %}");
+  background-attachment: fixed;
+  opacity: 0.93;
+  background-repeat: no-repeat;
+  
+  background-size:cover;
+
+
+  }
+p{
+  color:black
+}
+
+</style>
+
+
+
+
+    {% block head %}
+
+
+
+    {% endblock %}
+
+
+  
+  </head>
+
+<body>
+
+
+  <!-- breadcrumb start-->
+  <section class="breadcrumb_part breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>contact</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section section_padding">
+    <div class="container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.4394881070366!2d85.31545621551317!3d27.67280843361497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19af991bc5d9%3A0xf7fa4ac582280d45!2sVedas%20College!5e0!3m2!1sen!2snp!4v1600789407099!5m2!1sen!2snp" width="1000" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+      
+    </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+  
+ <!--added template JS-->
+
+   <script src="{% static 'homepage/bootstrap/js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'homepage/bootstrap/js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'homepage/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- owl carousel js -->
+    <script src="{% static 'homepage/bootstrap/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'homepage/bootstrap/js/jquery.nice-select.min.js' %}"></script>
+    <!-- contact js -->
+    <script src="{% static 'homepage/bootstrap/js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'homepage/bootstrap/js/jquery.form.js' %}"></script>
+    <script src="{% static 'homepage/bootstrap/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'homepage/bootstrap/js/mail-script.js' %}"></script>
+    <script src="{% static 'homepage/bootstrap/js/contact.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'homepage/bootstrap/js/custom.js' %}"></script>
+
+     <!-- added te JavaScript -->
+
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+</body>
+
+</html>
 <!--::regervation_part start::--> 
 <section class="regervation_part section_padding">
     <div class="container">
